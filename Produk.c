@@ -32,10 +32,7 @@ void tambahProduk(Produk data[], int *n)
 
     // Menghitung total profit
     data[*n].totalProfit = data[*n].profit * data[*n].jumlahTerjual;
-
-    // Menambahkan produk ke antrian
-    enqueue(&q, data[*n]);
-
+    
     // Menambah jumlah data
     (*n)++;
 
