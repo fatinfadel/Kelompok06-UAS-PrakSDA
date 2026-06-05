@@ -2,17 +2,18 @@
 #include "Produk.h"
 
 /* ===== PROTOTYPE ===== */
-void selectionSortProfit(Produk data[], int n);
-void cariProduk(Produk data[], int n);
-void top3ProdukTerbaik(Produk data[], int n);
-void hapusProduk(Produk data[], int *n);
+void selectionSortProfit(Produk data[], int n); // Mengurutkan produk berdasarkan profit terbesar
+void cariProduk(Produk data[], int n);          // Mencari produk berdasarkan nama
+void top3ProdukTerbaik(Produk data[], int n);   // Menampilkan 3 produk terbaik/terlaris
+void hapusProduk(Produk data[], int *n);        // Menghapus produk dari data
 
 /* ===== QUEUE PROTOTYPE ===== */
-void initQueue(Queue *q);
-void enqueue(Queue *q, Produk p);
-void printQueue(Queue *q);
+void initQueue(Queue *q);          // Menginisialisasi queue (antrian) kosong
+void enqueue(Queue *q, Produk p);  // Menambahkan produk ke antrian
+void printQueue(Queue *q);         // Menampilkan isi antrian produk
 
 /* ================= HEADER ================= */
+// Menampilkan judul program
 void header()
 {
     printf("\n+==============================================================+\n");
@@ -22,6 +23,7 @@ void header()
 }
 
 /* ================= MENU ================= */
+// Menampilkan daftar menu program
 void menu()
 {
     printf("\n+----------------------- MENU UTAMA --------------------------+\n");
@@ -36,20 +38,22 @@ void menu()
 }
 
 /* ================= FOOTER ================= */
+// Menampilkan pesan saat keluar program
 void exitScreen()
 {
     printf("\n+==============================================================+\n");
-    printf("|                           TERIMA KASIH                       |\n");
-    printf("|                SEMOGA BISNIS ANDA SEMAKIN SUKSES             |\n");
+    printf("|                        TERIMA KASIH                         |\n");
+    printf("|               SEMOGA BISNIS ANDA SEMAKIN SUKSES             |\n");
     printf("+==============================================================+\n");
 }
+
 
 int main()
 {
     Produk data[MAX];
     int n = muatData(data);
 
-    if(n < 0) n = 0;
+   if(n < 0) n = 0;                // Jika gagal memuat, set jumlah data = 0
 
     /* ===== QUEUE INIT ===== */
     Queue q;
@@ -76,8 +80,7 @@ int main()
                 tambahProduk(data, &n);
                 simpanData(data, n);
 
-                /* MASUK QUEUE */
-                enqueue(&q, data[n - 1]);
+                enqueue(&q, data[n - 1]);    // Memasukkan produk ke queue
 
                 printf("Produk berhasil ditambahkan & masuk antrian\n");
                 break;
@@ -117,9 +120,9 @@ int main()
                 printf("Error Menu tidak valid!\n");
         }
 
-        printf("\n");
+      printf("\n");                        // Memberi jarak tampilan
 
-    } while(pilih != 0);
+    } while(pilih != 0);                   // Berulang sampai pilih 0
 
-    return 0;
+    return 0;                              // Program selesai
 }
