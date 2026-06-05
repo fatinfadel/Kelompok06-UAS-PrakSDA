@@ -6,7 +6,7 @@
      if(n == 0) // Informasi ketersediaan barang
       {
         printf("\n[INFO] Data kosong!\n");
-        return;
+        return; 
       }
 
  selectionSortProfit(data, n);
